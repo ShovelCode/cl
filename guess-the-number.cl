@@ -1,0 +1,13 @@
+(defun guess-the-number ()
+  (let* ((number (random 100))
+         (guess nil)
+         (num-guesses 0))
+    (format t "I'm thinking of a number between 0 and 100.~%")
+    (loop while (not (eql guess number)) do
+          (setq guess (read-from-string (read-line)))
+          (incf num-guesses)
+          (cond ((< guess number)
+                 (format t "Too low.~%"))
+                ((> guess number)
+                 (format t "Too high.~%"))
+                (t (format t "You guessed it in ~d tries!~%" num-guesses)))))
